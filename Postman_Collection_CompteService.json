@@ -1,0 +1,191 @@
+{
+  "info": {
+    "name": "CompteService gRPC",
+    "description": "Collection pour tester le service gRPC de gestion de comptes bancaires",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. SaveCompte - Créer compte COURANT",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"compte\": {\n    \"solde\": 1000.50,\n    \"dateCreation\": \"2025-11-27\",\n    \"type\": \"COURANT\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "grpc://localhost:9090/CompteService/SaveCompte",
+          "protocol": "grpc",
+          "host": [
+            "localhost"
+          ],
+          "port": "9090",
+          "path": [
+            "CompteService",
+            "SaveCompte"
+          ]
+        },
+        "description": "Créer un nouveau compte de type COURANT avec un solde initial"
+      }
+    },
+    {
+      "name": "2. SaveCompte - Créer compte EPARGNE",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"compte\": {\n    \"solde\": 5000.00,\n    \"dateCreation\": \"2025-11-27\",\n    \"type\": \"EPARGNE\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "grpc://localhost:9090/CompteService/SaveCompte",
+          "protocol": "grpc",
+          "host": [
+            "localhost"
+          ],
+          "port": "9090",
+          "path": [
+            "CompteService",
+            "SaveCompte"
+          ]
+        },
+        "description": "Créer un nouveau compte de type EPARGNE"
+      }
+    },
+    {
+      "name": "3. SaveCompte - Créer autre compte",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"compte\": {\n    \"solde\": 2500.75,\n    \"dateCreation\": \"2025-11-27\",\n    \"type\": \"COURANT\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "grpc://localhost:9090/CompteService/SaveCompte",
+          "protocol": "grpc",
+          "host": [
+            "localhost"
+          ],
+          "port": "9090",
+          "path": [
+            "CompteService",
+            "SaveCompte"
+          ]
+        },
+        "description": "Créer un troisième compte pour les tests"
+      }
+    },
+    {
+      "name": "4. AllComptes - Lister tous les comptes",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "grpc://localhost:9090/CompteService/AllComptes",
+          "protocol": "grpc",
+          "host": [
+            "localhost"
+          ],
+          "port": "9090",
+          "path": [
+            "CompteService",
+            "AllComptes"
+          ]
+        },
+        "description": "Récupérer la liste de tous les comptes créés"
+      }
+    },
+    {
+      "name": "5. CompteById - Rechercher par ID",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"REMPLACER_PAR_UN_ID_REEL\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "grpc://localhost:9090/CompteService/CompteById",
+          "protocol": "grpc",
+          "host": [
+            "localhost"
+          ],
+          "port": "9090",
+          "path": [
+            "CompteService",
+            "CompteById"
+          ]
+        },
+        "description": "Rechercher un compte spécifique par son ID. Remplacez l'ID par un ID réel obtenu depuis AllComptes."
+      }
+    },
+    {
+      "name": "6. TotalSolde - Statistiques",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "grpc://localhost:9090/CompteService/TotalSolde",
+          "protocol": "grpc",
+          "host": [
+            "localhost"
+          ],
+          "port": "9090",
+          "path": [
+            "CompteService",
+            "TotalSolde"
+          ]
+        },
+        "description": "Obtenir les statistiques : nombre total de comptes, somme des soldes et moyenne"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "grpcServer",
+      "value": "localhost:9090",
+      "type": "string"
+    }
+  ]
+}
+
